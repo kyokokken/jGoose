@@ -1,0 +1,12 @@
+-- Known bugs.
+
+- GID Event / ItemInfoEvent messed up.
+Can't right click vendor items.
+
+- Connection stays alive after closing for IP.
+
+- Damage done doesn't display above enemies head.
+(Probably because I treat damage as long now? Damage is / 100? Shouldn't I see -0 anyway for damage less than 100?
+
+- Aether numbers displayed wrong
+A NumberFormat should be enough.
