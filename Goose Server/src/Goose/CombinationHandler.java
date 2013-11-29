@@ -8,18 +8,17 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map.Entry;
 
 public class CombinationHandler {
-	Hashtable combinations;
+	Hashtable<Integer, Combination> combinations;
 
 	/**
 	 * Constructor
 	 * 
 	 */
 	public CombinationHandler() throws Exception {
-		this.combinations = new Hashtable();
+		this.combinations = new Hashtable<Integer, Combination>();
 	}
 
 	/**
@@ -44,8 +43,7 @@ public class CombinationHandler {
 		int itemid;
 		ItemTemplate template;
 		int count;
-		for (Object __dummyForeachVar0 : this.combinations.values()) {
-			Combination comb = (Combination) __dummyForeachVar0;
+		for (Combination comb : this.combinations.values()) {
 			// Load required items
 			comb.setRequiredHash(new HashMap<Integer, Integer>());
 			resultSet = world.getSqlConnection()
@@ -132,8 +130,7 @@ public class CombinationHandler {
 		for (Object __dummyForeachVar2 : this.combinations.values()) {
 			Combination comb = (Combination) __dummyForeachVar2;
 			matched = true;
-			for (Object __dummyForeachVar1 : comb.getRequiredHash().entrySet()) {
-				Entry<Integer, Integer> req = (Entry<Integer, Integer>) __dummyForeachVar1;
+			for (Entry<Integer, Integer> req : comb.getRequiredHash().entrySet()) {
 				if (combine.containsKey(req.getKey()))
 					c = combine.get(req.getKey());
 				else

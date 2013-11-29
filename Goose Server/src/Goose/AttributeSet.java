@@ -322,7 +322,8 @@ public class AttributeSet {
 		return ret;
 	}
 
-	public static AttributeSet subtract(AttributeSet a1, AttributeSet a2) throws Exception {
+	public static AttributeSet subtract(AttributeSet a1, AttributeSet a2)
+			throws Exception {
 		AttributeSet ret = new AttributeSet();
 		ret.setAC(a1.getAC() - a2.getAC());
 		ret.setAirResist(a1.getAirResist() - a2.getAirResist());

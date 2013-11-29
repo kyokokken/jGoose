@@ -1,6 +1,7 @@
 package Goose.Events;
 
 import Goose.Event;
+import Goose.NPC;
 import Goose.Events.RespawnMapCommandEvent;
 import Goose.GameWorld;
 
@@ -21,9 +22,7 @@ public class RespawnMapCommandEvent extends Event {
 	public void ready(GameWorld world) throws Exception {
 		if (this.getPlayer().getState() == Goose.Player.States.Ready
 				&& this.getPlayer().getAccess() == Goose.Player.AccessStatus.GameMaster) {
-			for (Object __dummyForeachVar0 : this.getPlayer().getMap()
-					.getNPCs()) {
-				Goose.NPC npc = (Goose.NPC) __dummyForeachVar0;
+			for (NPC npc : this.getPlayer().getMap().getNPCs()) {
 				if (npc.getState() == Goose.NPC.States.Dead) {
 					npc.spawn(world);
 				}

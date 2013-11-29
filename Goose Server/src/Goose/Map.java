@@ -481,7 +481,6 @@ public class Map {
 			if (tile instanceof WarpTile) {
 				return true;
 			}
-
 			if (tile instanceof BlockedTile) {
 				if (ignore instanceof Goose.Player
 						&& ((Goose.Player) ignore).getAccess() == Goose.Player.AccessStatus.GameMaster) {

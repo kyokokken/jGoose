@@ -18,7 +18,7 @@ import java.util.List;
 public class NPCHandler {
 	List<NPCTemplate> templates;
 	List<Goose.NPC> npcs;
-	Hashtable idToNPC;
+	Hashtable<Integer, Goose.NPC> idToNPC;
 
 	/**
 	 * Constructor
@@ -27,7 +27,7 @@ public class NPCHandler {
 	public NPCHandler() throws Exception {
 		this.templates = new ArrayList<NPCTemplate>();
 		this.npcs = new ArrayList<Goose.NPC>();
-		this.idToNPC = new Hashtable();
+		this.idToNPC = new Hashtable<Integer, Goose.NPC>();
 	}
 
 	/**

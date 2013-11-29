@@ -3,7 +3,6 @@ package Goose.Events;
 import Goose.Event;
 import Goose.Events.GuildRemoveCommandEvent;
 import Goose.GameWorld;
-import Goose.Guild;
 import Goose.Guild.GuildRanks;
 
 public class GuildRemoveCommandEvent extends Event {

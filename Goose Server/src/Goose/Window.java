@@ -111,6 +111,7 @@ public class Window {
 	 */
 	public void create(Goose.Player player, GameWorld world) throws Exception {
 		this.setID(player.getLastWindowID() + 1);
+		player.setLastWindowID(this.getID());
 		switch (this.getType()) {
 			case Vendor:
 				this.setFrame(WindowFrames.Vendor);
@@ -127,7 +128,7 @@ public class Window {
 
 		}
 		String create = "MKW" + this.getID() + ","
-				+ ((Enum) this.getFrame()).ordinal() + "," + this.getTitle()
+				+ this.getFrame().ordinal() + "," + this.getTitle()
 				+ "," + this.getButtons() + ",";
 		switch (this.getType()) {
 			case Vendor:

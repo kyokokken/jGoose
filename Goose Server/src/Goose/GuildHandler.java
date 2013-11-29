@@ -16,13 +16,13 @@ import java.util.List;
      */
 public class GuildHandler   
 {
-    Hashtable guilds;
+    Hashtable<Integer, Guild> guilds;
     List<Guild> newguilds;
     /**
              * Constructor
              */
     public GuildHandler() throws Exception {
-        guilds = new Hashtable();
+        guilds = new Hashtable<Integer, Guild>();
         newguilds = new ArrayList<Guild>();
     }
 

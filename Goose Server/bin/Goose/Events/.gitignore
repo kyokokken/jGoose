@@ -92,3 +92,5 @@
 /WhoEvent.class
 /WindowButtonClickEvent.class
 /WindowToInventoryEvent.class
+/GMSpawn.class
+/GMSpawnNPC.class

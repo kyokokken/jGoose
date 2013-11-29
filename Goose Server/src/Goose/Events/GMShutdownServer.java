@@ -23,7 +23,7 @@ public class GMShutdownServer extends Event {
 		if (this.getPlayer().getState() == Goose.Player.States.Ready
 				&& this.getPlayer().getAccess() == AccessStatus.GameMaster) {
 			String packet = (String) this.getData();
-			String[] tokens = packet.split(" ");
+//			String[] tokens = packet.split(" ");
 			world.send(this.getPlayer(), "$7Server restarting.");
 			world.stop();
 		}

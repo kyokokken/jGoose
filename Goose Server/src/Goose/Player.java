@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -778,15 +779,15 @@ public class Player implements ICharacter {
 		 * 
 		 * 
 		 */
-		__dummyEnum__0(0), Experience(1), Tell(2), __dummyEnum__1(0), WordFilter(4);
+		__dummyEnum__0(0), Experience(1), Tell(2), __dummyEnum__1(0), WordFilter(
+				4);
 		private final int value;
-		private ToggleSetting(int value)
-		{
+
+		private ToggleSetting(int value) {
 			this.value = value;
 		}
-		
-		public int getValue()
-		{
+
+		public int getValue() {
 			return value;
 		}
 	}
@@ -802,7 +803,8 @@ public class Player implements ICharacter {
 	}
 
 	public boolean getChatFilterEnabled() throws Exception {
-		return ((this.getToggleSettings().getValue() & ToggleSetting.WordFilter.getValue()) == 0);
+		return ((this.getToggleSettings().getValue() & ToggleSetting.WordFilter
+				.getValue()) == 0);
 	}
 
 	private double __AetherThreshold;
@@ -891,7 +893,11 @@ public class Player implements ICharacter {
 
 		return "MKC"
 				+ this.getLoginID()
-				+ ",5,"
+				// + ",5,"
+				+ ","
+				+ (this.getAccess() == AccessStatus.GameMaster ? "12" : "5")
+				+ ","
+				+ (this.getAccess() == AccessStatus.GameMaster ? "GM " : "")
 				+ this.getName()
 				+ ","
 				+ this.getTitle()
@@ -937,12 +943,12 @@ public class Player implements ICharacter {
 				.getServerName()).getBytes();
 		data = md5.digest(data);
 		String passwordHash = new String(data);
-//		System.out.println(passwordHash);
-//		String passwordHash = new String(data, StandardCharsets.US_ASCII);
+		// System.out.println(passwordHash);
+		// String passwordHash = new String(data, StandardCharsets.US_ASCII);
 		passwordHash = passwordHash.replace("-", "").toLowerCase();
 		passwordHash = passwordHash.replace("'", "").toLowerCase();
-//		passwordHash = passwordHash.replaceAll("[^a-zA-Z\\d\\s:]", "");
-//		System.out.println(passwordHash);
+		// passwordHash = passwordHash.replaceAll("[^a-zA-Z\\d\\s:]", "");
+		// System.out.println(passwordHash);
 		this.setAutoCreatedNotSaved(true);
 		this.setPlayerID(world.getPlayerHandler().getCurrentID());
 		world.getPlayerHandler().setCurrentID(
@@ -1025,10 +1031,10 @@ public class Player implements ICharacter {
 		this.setClass(world.getClassHandler().getClass(this.getClassID()));
 		this.setMaxStats(AttributeSet.add(this.getMaxStats(), this.getClas()
 				.getLevel(this.getLevel()).getBaseStats()));
-//		this.setMaxStats(new AttributeSet());
+		// this.setMaxStats(new AttributeSet());
 		this.setBodyState(1);
-//		this.setToggleSettings(GameSettings.getDefault()
-//				.getDefaultToggleSettings());
+		// this.setToggleSettings(GameSettings.getDefault()
+		// .getDefaultToggleSettings());
 		this.setAetherThreshold(GameSettings.getDefault()
 				.getDefaultAetherThreshold());
 		this.setInventory(new Inventory(this));
@@ -1173,8 +1179,8 @@ public class Player implements ICharacter {
 		this.setCurrentHP(((int) ((this.getMaxStats().getHP() * 0.8))));
 		this.setCurrentMP(((int) ((this.getMaxStats().getMP() * 0.8))));
 		this.setCurrentSP(this.getMaxStats().getSP());
-//		this.setToggleSettings((ToggleSetting) resultSet
-//				.getLong("toggle_settings"));
+		// this.setToggleSettings((ToggleSetting) resultSet
+		// .getLong("toggle_settings"));
 		this.setAetherThreshold(resultSet.getDouble("aether_threshold"));
 		// Close reader here so inventory can create it's own reader
 		resultSet.close();
@@ -1194,7 +1200,8 @@ public class Player implements ICharacter {
 	 */
 	public void loadFromReader(GameWorld world, ResultSet resultSet)
 			throws Exception {
-		this.setAccess(Goose.Player.AccessStatus.values()[resultSet.getInt("access_status")]);
+		this.setAccess(Goose.Player.AccessStatus.values()[resultSet
+				.getInt("access_status")]);
 		String databaseHash = resultSet.getString("password_hash");
 		String base64Salt = resultSet.getString("password_salt");
 		this.setAutoCreatedNotSaved(false);
@@ -1234,19 +1241,16 @@ public class Player implements ICharacter {
 		this.getBaseStats().setAC(resultSet.getInt("stat_ac"));
 		this.getBaseStats().setStrength(resultSet.getInt("stat_str"));
 		this.getBaseStats().setStamina(resultSet.getInt("stat_sta"));
-		this.getBaseStats()
-				.setIntelligence(resultSet.getInt("stat_int"));
+		this.getBaseStats().setIntelligence(resultSet.getInt("stat_int"));
 		this.getBaseStats().setDexterity(resultSet.getInt("stat_dex"));
 		this.getBaseStats().setFireResist(resultSet.getInt("res_fire"));
 		this.getBaseStats().setAirResist(resultSet.getInt("res_air"));
-		this.getBaseStats()
-				.setEarthResist(resultSet.getInt("res_earth"));
-		this.getBaseStats().setSpiritResist(
-				resultSet.getInt("res_spirit"));
-		this.getBaseStats()
-				.setWaterResist(resultSet.getInt("res_water"));
+		this.getBaseStats().setEarthResist(resultSet.getInt("res_earth"));
+		this.getBaseStats().setSpiritResist(resultSet.getInt("res_spirit"));
+		this.getBaseStats().setWaterResist(resultSet.getInt("res_water"));
 		this.setMaxStats(new AttributeSet());
-		this.setMaxStats(AttributeSet.add(this.getMaxStats(), this.getBaseStats()));
+		this.setMaxStats(AttributeSet.add(this.getMaxStats(),
+				this.getBaseStats()));
 		this.getMaxStats().setHaste(GameSettings.getDefault().getBaseHaste());
 		this.getMaxStats().setSpellDamage(
 				GameSettings.getDefault().getBaseSpellDamage());
@@ -1267,8 +1271,10 @@ public class Player implements ICharacter {
 		this.getMaxStats().setMPStaticRegen(
 				GameSettings.getDefault().getBaseMPStaticRegen());
 		this.setClass(world.getClassHandler().getClass(this.getClassID()));
-		this.setMaxStats(AttributeSet.add(this.getMaxStats(), this.getClas().getLevel(this.getLevel()).getBaseStats()));
-//		this.setToggleSettings((ToggleSetting) (resultSet.getLong("toggle_settings"));
+		this.setMaxStats(AttributeSet.add(this.getMaxStats(), this.getClas()
+				.getLevel(this.getLevel()).getBaseStats()));
+		// this.setToggleSettings((ToggleSetting)
+		// (resultSet.getLong("toggle_settings"));
 		this.setAetherThreshold(resultSet.getDouble("aether_threshold"));
 	}
 
@@ -1338,7 +1344,7 @@ public class Player implements ICharacter {
 					+ "'"
 					+ this.getPasswordSalt()
 					+ "', "
-					+ ((Enum) this.getAccess()).ordinal()
+					+ this.getAccess().ordinal()
 					+ ", "
 					+ this.getMapID()
 					+ ", "
@@ -1419,11 +1425,12 @@ public class Player implements ICharacter {
 			// "player_title=@playerTitle, " +
 			// "player_surname=@playerSurname, " +
 			String query = "UPDATE players SET " + "player_name='"
-					+ this.getName() + "', " + "player_title='" + this.getTitle() + "', "
-					+ "player_surname='" + this.getSurname() + "', " + "password_hash='"
+					+ this.getName() + "', " + "player_title='"
+					+ this.getTitle() + "', " + "player_surname='"
+					+ this.getSurname() + "', " + "password_hash='"
 					+ this.getPasswordHash() + "', " + "password_salt='"
 					+ this.getPasswordSalt() + "', " + "access_status="
-					+ ((Enum) this.getAccess()).ordinal() + ", " + "map_id="
+					+ this.getAccess().ordinal() + ", " + "map_id="
 					+ this.getMapID() + ", " + "map_x=" + this.getMapX() + ", "
 					+ "map_y=" + this.getMapY() + ", " + "player_facing="
 					+ this.getFacing() + ", " + "bound_id=" + this.getBoundID()
@@ -1861,7 +1868,7 @@ public class Player implements ICharacter {
 			this.setCurrentSP(this.getMaxStats().getSP());
 		}
 
-		world.send(this, this.sNFString());
+		// world.send(this, this.sNFString());
 		this.addRegenEvent(world);
 	}
 
@@ -1932,7 +1939,7 @@ public class Player implements ICharacter {
 		} else {
 			damage = this.getMaxStats().getStrength() + this.getWeaponDamage()
 					+ this.getLevel()
-					+ world.getRandom().nextInt(this.getLevel() - 1) + 1
+					+ world.getRandom().nextInt(this.getLevel()) + 1
 					+ (this.getLevel() - character.getLevel());
 		}
 		double maxac = GameSettings.getDefault().getMaxAC();
@@ -1986,7 +1993,8 @@ public class Player implements ICharacter {
 		if (GameSettings.getDefault().getExperienceCap() > 0
 				&& this.getExperience() + this.getExperienceSold() > GameSettings
 						.getDefault().getExperienceCap()) {
-			if ((this.getToggleSettings().getValue() & ToggleSetting.Experience.getValue()) != 0)
+			if ((this.getToggleSettings().getValue() & ToggleSetting.Experience
+					.getValue()) != 0)
 				return;
 
 			world.send(this,
@@ -2004,7 +2012,8 @@ public class Player implements ICharacter {
 
 		// To stop the client from crashing
 		if (this.getExperience() + exp > Integer.MAX_VALUE) {
-			if ((this.getToggleSettings().getValue() & ToggleSetting.Experience.getValue()) != 0)
+			if ((this.getToggleSettings().getValue() & ToggleSetting.Experience
+					.getValue()) != 0)
 				return;
 
 			world.send(this,
@@ -2013,7 +2022,8 @@ public class Player implements ICharacter {
 		}
 
 		this.setExperience(this.getExperience() + exp);
-		if ((this.getToggleSettings().getValue() & ToggleSetting.Experience.getValue()) == 0) {
+		if ((this.getToggleSettings().getValue() & ToggleSetting.Experience
+				.getValue()) == 0) {
 			switch (message) {
 				case Normal:
 					world.send(this, "$7You have gained " + exp
@@ -2202,7 +2212,7 @@ public class Player implements ICharacter {
 			this.setLastPing(world.getTimeNow());
 
 		if ((world.getTimeNow() - this.getLastPing()) > ((GameSettings
-				.getDefault().getPlayerSavePeriod() * 1.10) * world
+				.getDefault().getPlayerSavePeriod() * 2.00) * world
 				.getTimerFrequency())) {
 			world.lostConnection(this.getSock());
 		} else {
@@ -2275,8 +2285,8 @@ public class Player implements ICharacter {
 						for (Goose.Player p : this.getGroup().getPlayers()) {
 							if (p != this
 									&& p.getMap() == this.getMap()
-									&& Math.abs(p.getMapX() - this.getMapX()) <= getMap().RANGE_X
-									&& Math.abs(p.getMapY() - this.getMapY()) <= getMap().RANGE_Y) {
+									&& Math.abs(p.getMapX() - this.getMapX()) <= Map.RANGE_X
+									&& Math.abs(p.getMapY() - this.getMapY()) <= Map.RANGE_Y) {
 								spell.getSpellEffect().cast(this, p, world);
 							}
 
@@ -2333,10 +2343,17 @@ public class Player implements ICharacter {
 					.getTimerFrequency()) - (now - lastcast)) / world
 					.getTimerFrequency());
 			// wait = Math.MathSupport.round(wait, 2);
-			DecimalFormat df = new DecimalFormat("#.00");
+//			DecimalFormat df = new DecimalFormat("0.00");
+			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+			otherSymbols.setDecimalSeparator('.');
+			otherSymbols.setGroupingSeparator('.'); 
+			DecimalFormat df = new DecimalFormat("#.00", otherSymbols);
 			if (wait >= this.getAetherThreshold()) {
-				world.send(this, "$7You must wait " + df.format(wait)
-						+ " seconds to cast this spell.");
+				// world.send(this, "$7You must wait " + df.format(wait)
+				// + " seconds to cast this spell.");
+				String packet = "BT" + this.getLoginID() + ",60,"
+						+ df.format(wait);
+				world.send(this, packet);
 			}
 
 		}

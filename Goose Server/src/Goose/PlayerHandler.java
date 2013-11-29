@@ -20,9 +20,9 @@ public class PlayerHandler
     /**
     * A mapping of all player names to their corresponding Player object. Loaded on startup
     */
-    Hashtable allNameToPlayer;
+    Hashtable<String, Player> allNameToPlayer;
     List<Goose.Player> players;
-    Hashtable sockToPlayer;
+    Hashtable<Socket, Player> sockToPlayer;
     Goose.Player[] idToPlayer;
     int currentdbid = 1;
     /**
@@ -44,9 +44,9 @@ public class PlayerHandler
              */
     public PlayerHandler() throws Exception {
         this.players = new ArrayList<Goose.Player>();
-        this.sockToPlayer = new Hashtable();
+        this.sockToPlayer = new Hashtable<Socket, Player>();
         this.idToPlayer = new Goose.Player[GameSettings.getDefault().getMaxPlayers()];
-        this.allNameToPlayer = new Hashtable();
+        this.allNameToPlayer = new Hashtable<String, Player>();
     }
 
     /**
@@ -198,12 +198,10 @@ public class PlayerHandler
              
             if (player.getAccess() == Goose.Player.AccessStatus.Deleted)
                 continue;
-             
             this.allNameToPlayer.put(player.getName().toLowerCase(), player);
         }
-        for (Object __dummyForeachVar2 : this.allNameToPlayer.values())
+        for (Player player : this.allNameToPlayer.values())
         {
-            Goose.Player player = (Goose.Player)__dummyForeachVar2;
             player.loadAdditional(world);
         }
     }
@@ -218,12 +216,11 @@ public class PlayerHandler
 
     public List<Goose.Player> getAllPlayerData() throws Exception {
     	List<Player> ret = new ArrayList<>();
-    	Collection values = this.allNameToPlayer.values();
-    	for (Object player : values)
+    	Collection<Player> values = this.allNameToPlayer.values();
+    	for (Player player : values)
     	{
-    		ret.add((Player)player);
+    		ret.add(player);
     	}
-//        return (List<Player>) this.allNameToPlayer.values();
     	return ret;
     }
 

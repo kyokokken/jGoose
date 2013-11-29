@@ -59,7 +59,6 @@ public class Spellbook {
 	 * 
 	 */
 	public void save(GameWorld world) throws Exception {
-		ResultSet resultSet;
 		String query;
 		Spell slot;
 		for (int i = 1; i <= GameSettings.getDefault().getSpellbookSize(); i++) {
@@ -79,10 +78,10 @@ public class Spellbook {
 						+ ", "
 						+ slot.getID() + ", " + this.getSlotLastCast(i) + ");";
 			}
-			int executeUpdate = world.getSqlConnection().createStatement().executeUpdate(query);
+			world.getSqlConnection().createStatement().executeUpdate(query);
 			if (slot != null) {
-				System.out.println("SpellID: " + slot.getID() + " - "
-						+ executeUpdate);
+//				System.out.println("SpellID: " + slot.getID() + " - "
+//						+ executeUpdate);
 			}
 
 		}

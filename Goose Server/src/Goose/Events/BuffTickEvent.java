@@ -10,7 +10,6 @@ import Goose.GameWorld;
 import Goose.NPC;
 import Goose.NPC.States;
 import Goose.Player;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 
 public class BuffTickEvent extends Event {

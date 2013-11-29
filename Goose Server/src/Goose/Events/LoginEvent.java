@@ -5,8 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 
-import org.apache.commons.codec.binary.Base64;
-
 import Goose.Event;
 import Goose.Events.LoginEvent;
 import Goose.GameSettings;

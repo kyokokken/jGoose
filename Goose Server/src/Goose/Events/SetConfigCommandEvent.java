@@ -2,7 +2,6 @@ package Goose.Events;
 
 import Goose.Event;
 import Goose.Events.SetConfigCommandEvent;
-import Goose.GameSettings;
 import Goose.GameWorld;
 
 public class SetConfigCommandEvent  extends Event 

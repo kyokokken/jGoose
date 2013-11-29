@@ -5,7 +5,6 @@ import Goose.Event;
 import Goose.GameWorld;
 import Goose.Pet;
 import Goose.Pet.Modes;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 
 public class PetMoveEvent extends Event {

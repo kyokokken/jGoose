@@ -14,11 +14,11 @@ import java.util.Hashtable;
      */
 public class SpellHandler   
 {
-    Hashtable effects;
-    Hashtable spells;
+    Hashtable<Integer, SpellEffect> effects;
+    Hashtable<Integer, Spell> spells;
     public SpellHandler() throws Exception {
-        this.effects = new Hashtable();
-        this.spells = new Hashtable();
+        this.effects = new Hashtable<Integer, SpellEffect>();
+        this.spells = new Hashtable<Integer, Spell>();
     }
 
     /**

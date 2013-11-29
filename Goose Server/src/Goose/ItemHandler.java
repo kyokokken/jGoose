@@ -12,14 +12,14 @@ import Goose.Events.ItemSaveEvent;
  * 
  */
 public class ItemHandler {
-	Hashtable templates;
-	Hashtable items;
+	Hashtable<Integer, ItemTemplate> templates;
+	Hashtable<Integer, Item> items;
 	List<Item> newitems;
 	int currentid = 5002;
 
 	public ItemHandler() throws Exception {
-		this.templates = new Hashtable();
-		this.items = new Hashtable();
+		this.templates = new Hashtable<Integer, ItemTemplate>();
+		this.items = new Hashtable<Integer, Item>();
 		this.newitems = new ArrayList<Item>();
 	}
 

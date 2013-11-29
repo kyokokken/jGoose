@@ -8,7 +8,7 @@ import java.util.Hashtable;
  * 
  */
 public class Class {
-	Hashtable levels;
+	Hashtable<Integer, ClassLevel> levels;
 	private int __ClassID;
 
 	public int getClassID() {
@@ -60,7 +60,7 @@ public class Class {
 	}
 
 	public Class() throws Exception {
-		this.levels = new Hashtable();
+		this.levels = new Hashtable<Integer, ClassLevel>();
 	}
 
 	public ClassLevel getLevel(int level) throws Exception {

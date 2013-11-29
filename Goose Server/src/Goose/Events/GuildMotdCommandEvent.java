@@ -3,7 +3,6 @@ package Goose.Events;
 import Goose.Event;
 import Goose.Events.GuildMotdCommandEvent;
 import Goose.GameWorld;
-import Goose.Guild;
 import Goose.Guild.GuildRanks;
 
 public class GuildMotdCommandEvent extends Event {

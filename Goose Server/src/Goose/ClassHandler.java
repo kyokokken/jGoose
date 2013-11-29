@@ -14,10 +14,10 @@ import java.util.Hashtable;
  * 
  */
 public class ClassHandler {
-	Hashtable classes;
+	Hashtable<Integer, Class> classes;
 
 	public ClassHandler() throws Exception {
-		this.classes = new Hashtable();
+		this.classes = new Hashtable<Integer, Class>();
 	}
 
 	/**
@@ -25,7 +25,7 @@ public class ClassHandler {
 	 * 
 	 */
 	public Class getClass(int id) throws Exception {
-		return (Class) this.classes.get(id);
+		return this.classes.get(id);
 	}
 
 	/**

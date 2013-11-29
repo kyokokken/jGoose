@@ -37,38 +37,38 @@ public class RankCommandEvent extends Event {
 
 			data = data.substring(1);
 			Window window;
-			String __dummyScrutVar0 = data.toLowerCase();
-			if (__dummyScrutVar0.equals("all")) {
+			String rankArgument = data.toLowerCase();
+			if (rankArgument.equals("all")) {
 				window = new Window();
 				window.setType(WindowTypes.Rank);
 				window.setTitle("All Ranks");
 				window.setButtons("0,0,0,0,0");
 				window.setData(world.getRankHandler().getAll());
-			} else if (__dummyScrutVar0.equals("gold")) {
+			} else if (rankArgument.equals("gold")) {
 				window = new Window();
 				window.setType(WindowTypes.Rank);
 				window.setTitle("Gold Ranks");
 				window.setButtons("0,0,0,0,0");
 				window.setData(world.getRankHandler().getGold());
-			} else if (__dummyScrutVar0.equals("magus")) {
+			} else if (rankArgument.equals("magus")) {
 				window = new Window();
 				window.setType(WindowTypes.Rank);
 				window.setTitle("Magus Ranks");
 				window.setButtons("0,0,0,0,0");
 				window.setData(world.getRankHandler().getMagus());
-			} else if (__dummyScrutVar0.equals("priest")) {
+			} else if (rankArgument.equals("priest")) {
 				window = new Window();
 				window.setType(WindowTypes.Rank);
 				window.setTitle("Priest Ranks");
 				window.setButtons("0,0,0,0,0");
 				window.setData(world.getRankHandler().getPriest());
-			} else if (__dummyScrutVar0.equals("warrior")) {
+			} else if (rankArgument.equals("warrior")) {
 				window = new Window();
 				window.setType(WindowTypes.Rank);
 				window.setTitle("Warrior Ranks");
 				window.setButtons("0,0,0,0,0");
 				window.setData(world.getRankHandler().getWarrior());
-			} else if (__dummyScrutVar0.equals("rogue")) {
+			} else if (rankArgument.equals("rogue")) {
 				window = new Window();
 				window.setType(WindowTypes.Rank);
 				window.setTitle("Rogue Ranks");

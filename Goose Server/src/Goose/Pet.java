@@ -17,7 +17,7 @@ public class Pet extends Goose.Player {
 	/**
 	 * Maps Login IDs to pet objects
 	 */
-	public static Hashtable LoginIDToPet = new Hashtable();
+	public static Hashtable<Integer, Pet> LoginIDToPet = new Hashtable<Integer, Pet>();
 
 	/**
 	 * Returns the first empty login id for a pet
@@ -707,6 +707,7 @@ public class Pet extends Goose.Player {
 	 * 
 	 * @param world
 	 */
+	//TODO: Broken Method.
 	public void destroy(GameWorld world) throws Exception {
 		if (!this.getIsAlive())
 			return;
@@ -731,7 +732,8 @@ public class Pet extends Goose.Player {
 		}
 		this.getMap().removePlayer(this);
 		this.setState(States.NotLoggedIn);
-		Pet.LoginIDToPet.put(this.getLoginID(), null);
+		Pet.LoginIDToPet.remove(this.getLoginID());
+//		Pet.LoginIDToPet.put(this.getLoginID(), null);
 		this.getMap().setCharacter(null, this.getMapX(), this.getMapY());
 		this.setMap(null);
 	}

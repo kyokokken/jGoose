@@ -67,13 +67,13 @@ public class Guild {
 
 	}
 
-	private Hashtable __Members;
+	private Hashtable<Integer, PlayerGuildStatus> __Members;
 
-	public Hashtable getMembers() {
+	public Hashtable<Integer, PlayerGuildStatus> getMembers() {
 		return __Members;
 	}
 
-	public void setMembers(Hashtable value) {
+	public void setMembers(Hashtable<Integer, PlayerGuildStatus> value) {
 		__Members = value;
 	}
 
@@ -132,7 +132,7 @@ public class Guild {
 	 * Constructor
 	 */
 	public Guild() throws Exception {
-		this.setMembers(new Hashtable());
+		this.setMembers(new Hashtable<Integer, PlayerGuildStatus>());
 		this.setOnlineMembers(new ArrayList<Goose.Player>());
 		this.setDirty(false);
 	}
@@ -312,13 +312,13 @@ public class Guild {
 								+ ", "
 								+ status.getPlayerID()
 								+ ", "
-								+ ((Enum) status.getRank()).ordinal()
+								+ status.getRank().ordinal()
 								+ ")";
 						world.getSqlConnection().createStatement().executeQuery(query);
 						status.setJustAdded(false);
 					} else {
 						query = "UPDATE guild_members SET guild_rank="
-								+ ((Enum) status.getRank()).ordinal()
+								+ status.getRank().ordinal()
 								+ " WHERE guild_id=" + this.getID()
 								+ " AND player_id=" + status.getPlayerID();
 						world.getSqlConnection().createStatement().executeQuery(query);

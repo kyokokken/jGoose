@@ -5,9 +5,6 @@ import Goose.GameSettings;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.SocketException;
-import java.nio.channels.Selector;
 import java.util.ArrayList;
 
 import org.apache.commons.codec.Charsets;
@@ -19,8 +16,8 @@ import org.apache.commons.codec.Charsets;
  * 
  */
 public class GameServer {
-	Socket listen;
-	ArrayList sockets;
+	ServerSocket listen;
+	ArrayList<Socket> sockets;
 	GameWorld gameworld;
 
 	/**
@@ -31,7 +28,7 @@ public class GameServer {
 	 * 
 	 */
 	public GameServer() throws Exception {
-		this.sockets = new ArrayList();
+		this.sockets = new ArrayList<Socket>();
 		this.gameworld = new GameWorld(this);
 		this.start();
 		this.gameLoop();
@@ -54,9 +51,9 @@ public class GameServer {
 		// this.listen = new Socket(InetAddress.getByName(gameServerIP),
 		// gameServerPort);
 		this.listen = new ServerSocket(gameServerPort, 10,
-				InetAddress.getByName(gameServerIP)).accept();
+				InetAddress.getByName(gameServerIP));
 
-		this.sockets.add(this.listen);
+		// this.sockets.add(this.listen);
 	}
 
 	/**
@@ -74,35 +71,18 @@ public class GameServer {
 	 * 
 	 */
 	public void gameLoop() throws Exception {
-		ArrayList readList;
-		ArrayList writeList;
+		Thread serverThread = new Thread(new ServerSocketHandler(this.listen,
+				this));
+		serverThread.start();
 		while (this.gameworld.getRunning()) {
-			Thread.sleep(1);
-			readList = (ArrayList) this.sockets.clone();
-			writeList = (ArrayList) this.sockets.clone();
-			// TODO: Have to use Selector or other libs.
-			// NetSocket.Select(readList, writeList, null, 2000);
-
-			for (Object readableSocket : readList) {
-				Socket socket = (Socket) readableSocket;
-				if (socket == this.listen && !socket.isConnected() && socket.isClosed()) {
-//					Socket newsock = new Socket(this.listen.getInetAddress(),
-//							this.listen.getPort());
-					this.sockets.add(socket);
-					this.gameworld.newConnection(socket);
-					String gameServerIP = GameSettings.getDefault().getGameServerIP();
-					short gameServerPort = GameSettings.getDefault().getGameServerPort();
-					socket.connect(listen.getLocalSocketAddress());
-				} else {
-					byte[] buffer = new byte[512];
-					int res = 0;
-					try {
-						socket.setReceiveBufferSize(512);
-						res = socket.getInputStream().read(buffer);
-					} catch (SocketException e) {
-					}
-
-					// GTFO, I want C-style
+			for (int i = 0; i < sockets.size(); i++) {
+				Socket socket = sockets.get(i);
+				byte[] buffer = new byte[512];
+				int res = 0;
+				try {
+					socket.setSoTimeout(2);
+					socket.setReceiveBufferSize(512);
+					res = socket.getInputStream().read(buffer);
 					if (res <= 0) {
 						this.gameworld.lostConnection(socket);
 					} else {
@@ -110,11 +90,38 @@ public class GameServer {
 								Charsets.US_ASCII);
 						this.gameworld.received(socket, strBuffer);
 					}
+				} catch (Exception e) {
 				}
 			}
 			this.gameworld.update();
 		}
+
 		this.stop();
+	}
+
+	private class ServerSocketHandler implements Runnable {
+		ServerSocket listen;
+		GameServer gameServer;
+
+		public ServerSocketHandler(ServerSocket listen, GameServer gameServer) {
+			this.listen = listen;
+			this.gameServer = gameServer;
+		}
+
+		@Override
+		public void run() {
+			while (gameServer.gameworld.getRunning()) {
+				try {
+					Socket clientSocket = listen.accept();
+					gameServer.gameworld.newConnection(clientSocket);
+					gameServer.sockets.add(clientSocket);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	/**

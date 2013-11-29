@@ -25,8 +25,6 @@ import Goose.SpellHandler;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -228,16 +226,15 @@ public class GameWorld {
 		// ";Trusted_Connection=yes;" + // hopefully remove the windows
 		// connection
 		java.lang.Class.forName("com.mysql.jdbc.Driver");
-		
+
 		Connection connect = null;
-		connect = DriverManager
-				.getConnection("jdbc:mysql://localhost/goose?"
-						+ "user=GooseServer&password=password1");
+		connect = DriverManager.getConnection("jdbc:mysql://localhost/goose?"
+				+ "user=GooseServer&password=password1");
 
 		this.setSqlConnection(connect);
-//		Statement statement = connect.createStatement();
-//		ResultSet resultSet = statement
-//				.executeQuery("SELECT * FROM feedback.comments");
+		// Statement statement = connect.createStatement();
+		// ResultSet resultSet = statement
+		// .executeQuery("SELECT * FROM feedback.comments");
 
 		// this.setSqlConnection(new SqlConnection("user id=" +
 		// GameSettings.getDefault().getDatabaseUsername() + ";password=" +
@@ -537,13 +534,12 @@ public class GameWorld {
 	 * 
 	 */
 	public void parseData(Goose.Player player) throws Exception {
-		
 
 		String data = player.getBuffer();
 		System.out.println("parseData: " + "<" + player.getName() + ">" + data);
 		char delim = '\u0001';
 		String[] tokens = data.split(String.valueOf(delim));
-//		int limit = tokens.length - 1;
+		// int limit = tokens.length - 1;
 		int limit = tokens.length;
 		if (!data.endsWith(String.valueOf(delim))) {
 			limit--;
@@ -555,7 +551,8 @@ public class GameWorld {
 			// data = data.Remove(0, packet.length() + 1);
 			data = data.substring(packet.length() + 1);
 			this.getEventHandler().addEvent(player, packet);
-			System.out.println("addEvent: " + "<" + player.getName() + ">" + packet);
+			System.out.println("addEvent: " + "<" + player.getName() + ">"
+					+ packet);
 		}
 		player.setBuffer(data);
 	}
@@ -625,14 +622,15 @@ public class GameWorld {
 		}
 	}
 
-//	public static void defaultEndExecuteNonQueryAsyncCallback(IAsyncResult ar)
-//			throws Exception {
-//		SqlCommand command = (SqlCommand) ar.AsyncState;
-//		try {
-//			command.EndExecuteNonQuery(ar);
-//		} catch (Exception e) {
-//		}
-//
-//	}
+	// public static void defaultEndExecuteNonQueryAsyncCallback(IAsyncResult
+	// ar)
+	// throws Exception {
+	// SqlCommand command = (SqlCommand) ar.AsyncState;
+	// try {
+	// command.EndExecuteNonQuery(ar);
+	// } catch (Exception e) {
+	// }
+	//
+	// }
 
 }

@@ -7,7 +7,6 @@ import Goose.Event;
 import Goose.Events.PlayerAttackEvent;
 import Goose.GameWorld;
 import Goose.ICharacter;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 import Goose.Window;
 import Goose.Window.WindowTypes;

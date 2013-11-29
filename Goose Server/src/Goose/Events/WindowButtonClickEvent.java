@@ -4,7 +4,6 @@ import Goose.Event;
 import Goose.Events.WindowButtonClickEvent;
 import Goose.GameWorld;
 import Goose.Window;
-import Goose.Window.WindowTypes;
 
 /**
  * WindowButtonClickEvent

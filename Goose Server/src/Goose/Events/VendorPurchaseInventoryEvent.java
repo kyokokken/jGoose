@@ -71,10 +71,6 @@ public class VendorPurchaseInventoryEvent extends Event {
 				return;
 			}
 
-			// log bad npc
-			if (npc == null)
-				return;
-
 			NPCVendorSlot slot = npc.getVendorItems()[slotid];
 			// log bad slot purchase
 			if (slot == null)

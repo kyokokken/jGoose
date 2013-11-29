@@ -28,7 +28,7 @@ public class AetherCommandEvent extends Event {
 			double thres = 0;
 			try {
 				thres = Double.parseDouble(data);
-			} catch (Exception __dummyCatchVar0) {
+			} catch (Exception e) {
 				thres = 0;
 			}
 

@@ -6,7 +6,6 @@ import Goose.Buff;
 import Goose.Event;
 import Goose.Events.FacingEvent;
 import Goose.GameWorld;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 
 /**

@@ -14,7 +14,7 @@ public class Program
     }
 
     static void Main(String[] args) throws Exception {
-        GameServer gs = new GameServer();
+        new GameServer();
         System.in.read();
     }
 

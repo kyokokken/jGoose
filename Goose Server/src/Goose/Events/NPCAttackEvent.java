@@ -3,11 +3,9 @@ package Goose.Events;
 import Goose.Buff;
 import Goose.Event;
 import Goose.GameWorld;
-import Goose.NPC;
 import Goose.NPC.States;
 import Goose.NPCTemplate;
 import Goose.NPCTemplate.BehaviourTypes;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 
 public class NPCAttackEvent extends Event {

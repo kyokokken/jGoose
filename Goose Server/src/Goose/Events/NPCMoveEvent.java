@@ -4,11 +4,9 @@ import Goose.Buff;
 import Goose.Event;
 import Goose.GameWorld;
 import Goose.Map;
-import Goose.NPC;
 import Goose.NPC.Aggro;
 import Goose.NPC.States;
 import Goose.Player;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 
 import java.util.ArrayList;

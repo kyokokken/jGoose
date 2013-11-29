@@ -632,11 +632,10 @@ public class SpellEffect {
 			packet += "\u0001" + "BT" + target.getLoginID() + ",60,Taunted";
 		}
 
-		if (packet.contains("\u0001"))
-		{
+		if (packet.contains("\u0001")) {
 			packet = packet.substring(packet.indexOf("\u0001"));
 		}
-		
+
 		if (target instanceof Goose.Player)
 			world.send((Goose.Player) target, packet);
 
@@ -831,8 +830,7 @@ public class SpellEffect {
 			return false;
 
 		if (caster == target) {
-			if ((((Enum) this.getEffected()).ordinal() & ((Enum) SpellEffected.Self)
-					.ordinal()) == 0)
+			if ((this.getEffected().ordinal() & SpellEffected.Self.ordinal()) == 0)
 				return false;
 			else
 				return true;
@@ -844,13 +842,12 @@ public class SpellEffect {
 
 		if (target.getLevel() >= this.getMinimumLevelEffected()) {
 			if (target instanceof Goose.Player) {
-				if ((((Enum) this.getEffected()).ordinal() & ((Enum) SpellEffected.Player)
+				if ((this.getEffected().ordinal() & SpellEffected.Player
 						.ordinal()) != 0)
 					return true;
 
 			} else if (target instanceof Goose.NPC) {
-				if ((((Enum) this.getEffected()).ordinal() & ((Enum) SpellEffected.NPC)
-						.ordinal()) != 0) {
+				if ((this.getEffected().ordinal() & SpellEffected.NPC.ordinal()) != 0) {
 					if (this.getEffectType() == EffectTypes.Root) {
 						if (((Goose.NPC) target).getCanBeRooted())
 							return true;
@@ -1018,7 +1015,7 @@ public class SpellEffect {
 			GameWorld world) throws Exception {
 		if (target instanceof Goose.Player && !target.getMap().getCanPVP())
 			return false;
-		List<Pet> pets = new ArrayList();
+		List<Pet> pets = new ArrayList<Pet>();
 		for (Pet p : ((Player) caster).getPets()) {
 			if (p.getIsAlive() && p.getMode() == Pet.Modes.Neutral) {
 				pets.add(p);
@@ -1369,7 +1366,7 @@ public class SpellEffect {
 			}
 			if (packet.contains("\u0001"))
 				packet = packet.substring(packet.indexOf("\u0001"));
-			
+
 			if (target instanceof Goose.Player)
 				world.send((Goose.Player) target, packet);
 
@@ -1398,7 +1395,7 @@ public class SpellEffect {
 		char token;
 		char op;
 		double value;
-		Hashtable symbolToValue = new Hashtable();
+		Hashtable<String, Number> symbolToValue = new Hashtable<String, Number>();
 		symbolToValue.put("%cchp", caster.getCurrentHP());
 		symbolToValue.put("%ccmp", caster.getCurrentMP());
 		symbolToValue.put("%ccsp", caster.getCurrentSP());
@@ -1582,7 +1579,7 @@ public class SpellEffect {
 			}
 		}
 
-		return ((Double)result.get(0)).intValue();
+		return ((Double) result.get(0)).intValue();
 
 	}
 }

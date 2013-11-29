@@ -15,7 +15,6 @@ import Goose.Group;
 import Goose.ICharacter;
 import Goose.Item;
 import Goose.ItemSlot;
-import Goose.ItemTemplate;
 import Goose.ItemTile;
 import Goose.Map;
 import Goose.NPCDropInfo;
@@ -23,7 +22,6 @@ import Goose.NPCTemplate;
 import Goose.NPCVendorSlot;
 import Goose.Pet;
 import Goose.Player.ExperienceMessage;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 import Goose.Window;
 import Goose.Window.WindowTypes;
@@ -1264,9 +1262,8 @@ public class NPC implements ICharacter {
 			// Set aggro to next highest
 			Goose.Player newaggro = null;
 			Goose.NPC.Aggro highest = new Goose.NPC.Aggro(0, 0);
-			for (Object __dummyForeachVar8 : this.getAggroTargetToValue()
+			for (Entry<Goose.Player, Goose.NPC.Aggro> p : this.getAggroTargetToValue()
 					.entrySet()) {
-				Entry<Goose.Player, Goose.NPC.Aggro> p = (Entry<Goose.Player, Goose.NPC.Aggro>) __dummyForeachVar8;
 				if (p.getValue().compareTo(highest) > 0) {
 					highest = p.getValue();
 					newaggro = p.getKey();
@@ -1390,9 +1387,8 @@ public class NPC implements ICharacter {
 				packet = "ERC" + this.getLoginID();
 				this.addRespawnEvent(world);
 				HashMap<Object, Long> damages = new HashMap<Object, Long>();
-				for (Object __dummyForeachVar14 : this.getAggroTargetToValue()
+				for (Entry<Goose.Player, Goose.NPC.Aggro> p : this.getAggroTargetToValue()
 						.entrySet()) {
-					Entry<Goose.Player, Goose.NPC.Aggro> p = (Entry<Goose.Player, Goose.NPC.Aggro>) __dummyForeachVar14;
 					if (p.getKey().getGroup() != null) {
 						if (damages.containsKey(p.getKey().getGroup())) {
 							damages.put(p.getKey().getGroup(),
@@ -1408,8 +1404,7 @@ public class NPC implements ICharacter {
 				}
 				Object highest = null;
 				long highestdamage = 0;
-				for (Object __dummyForeachVar15 : damages.entrySet()) {
-					Entry<Object, Long> p = (Entry<Object, Long>) __dummyForeachVar15;
+				for (Entry<Object, Long> p : damages.entrySet()) {
 					if (p.getValue() > highestdamage) {
 						highestdamage = p.getValue();
 						highest = p.getKey();

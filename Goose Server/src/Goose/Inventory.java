@@ -6,7 +6,6 @@ import Goose.GameSettings;
 import Goose.Item;
 import Goose.ItemSlot;
 import Goose.ItemTemplate;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 import Goose.Window;
 import Goose.Window.WindowTypes;
@@ -309,7 +308,7 @@ public class Inventory {
 		}
 
 		// log something here
-		this.equipped[((Enum) equipslot).ordinal()] = slot;
+		this.equipped[equipslot.ordinal()] = slot;
 		this.player.addStats(slot.getItem().getTotalStats(), world);
 		if (slot.getItem().getSpellEffect() != null) {
 			Buff buff = new Buff();
@@ -424,7 +423,7 @@ public class Inventory {
 		if (!this.addItem(slot.getItem(), slot.getStack(), world))
 			return false;
 
-		this.equipped[((Enum) equipslot).ordinal()] = null;
+		this.equipped[equipslot.ordinal()] = null;
 		this.player.removeStats(slot.getItem().getTotalStats(), world);
 		if (slot.getItem().getSpellEffect() != null) {
 			Buff remove = null;
@@ -520,7 +519,7 @@ public class Inventory {
 	 * 
 	 */
 	public ItemSlot getEquippedSlot(EquipSlots slot) throws Exception {
-		return this.equipped[((Enum) slot).ordinal()];
+		return this.equipped[slot.ordinal()];
 	}
 
 	/**
@@ -580,11 +579,11 @@ public class Inventory {
 	public void sendEquippedSlot(EquipSlots equipslot, GameWorld world)
 			throws Exception {
 		if (this.player.getState().compareTo(Goose.Player.States.LoadingMap) >= 0) {
-			ItemSlot slot = this.equipped[((Enum) equipslot).ordinal()];
+			ItemSlot slot = this.equipped[equipslot.ordinal()];
 			if (slot != null) {
 				world.send(
 						this.player,
-						"WNF11," + ((Enum) equipslot).ordinal() + ","
+						"WNF11," + equipslot.ordinal() + ","
 								+ slot.getItem().getName() + "|"
 								+ slot.getStack() + "|"
 								+ slot.getItem().getItemID() + "|"
@@ -594,7 +593,7 @@ public class Inventory {
 								+ slot.getItem().getGraphicB() + "|"
 								+ slot.getItem().getGraphicA());
 			} else {
-				world.send(this.player, "WNF11," + ((Enum) equipslot).ordinal()
+				world.send(this.player, "WNF11," + equipslot.ordinal()
 						+ ", |0|0|0|*");
 			}
 		}
@@ -952,9 +951,8 @@ public class Inventory {
         List<Integer> freeslots = new ArrayList<Integer>();
         ItemSlot[] newcombine = new ItemSlot[GameSettings.getDefault().getCombineBagSize() + 1];
         HashMap<Integer,Integer> reqhash = new HashMap<Integer,Integer>();
-        for (Object __dummyForeachVar12 : match.getRequiredHash().entrySet())
+        for (Entry<Integer,Integer> req : match.getRequiredHash().entrySet())
         {
-            Entry<Integer,Integer> req = (Entry<Integer,Integer>)__dummyForeachVar12;
             reqhash.put(req.getKey(), req.getValue());
         }
         Item item;

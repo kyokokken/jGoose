@@ -335,7 +335,8 @@ public class Item implements IItem {
 	public void loadFromTemplate(ItemTemplate template) throws Exception {
 		this.setTemplate(template);
 		this.setTemplateID(this.getTemplate().getID());
-		this.setTotalStats(AttributeSet.add(this.getTotalStats(), this.getTemplate().getBaseStats()));
+		this.setTotalStats(AttributeSet.add(this.getTotalStats(), this
+				.getTemplate().getBaseStats()));
 		this.setName(this.getTemplate().getName());
 		this.setDescription(this.getTemplate().getDescription());
 		this.setGraphicEquipped(this.getTemplate().getGraphicEquipped());
@@ -348,7 +349,6 @@ public class Item implements IItem {
 		this.setBodyState(this.getTemplate().getBodyState());
 	}
 
-	
 	/**
 	 * LoadTemplate, adds template to item
 	 * 
@@ -360,9 +360,12 @@ public class Item implements IItem {
 	 * 
 	 */
 	public void loadTemplate(ItemTemplate template) throws Exception {
-		this.setTotalStats(AttributeSet.add(this.getTotalStats(), template.getBaseStats()));
-		this.setTotalStats(AttributeSet.multiply(this.getTotalStats(), this.getStatMultiplier()));
-		this.setTotalStats(AttributeSet.add(this.getTotalStats(), this.getBaseStats()));
+		this.setTotalStats(AttributeSet.add(this.getTotalStats(),
+				template.getBaseStats()));
+		this.setTotalStats(AttributeSet.multiply(this.getTotalStats(),
+				this.getStatMultiplier()));
+		this.setTotalStats(AttributeSet.add(this.getTotalStats(),
+				this.getBaseStats()));
 	}
 
 	/**
@@ -370,7 +373,7 @@ public class Item implements IItem {
 	 * 
 	 */
 	public void addItem(GameWorld world) throws Exception {
-		
+
 		String query = "INSERT INTO items (item_id, item_template_id, item_name, item_description, "
 				+ "player_hp, player_mp, player_sp, stat_ac, stat_str, stat_sta, stat_dex, stat_int, "
 				+ "res_fire, res_water, res_spirit, res_air, res_earth, weapon_damage, item_value, "
@@ -432,7 +435,8 @@ public class Item implements IItem {
 				+ ", "
 				+ this.getBodyState()
 				+ ")";
-		PreparedStatement preparedStatement = world.getSqlConnection().prepareStatement(query);
+		PreparedStatement preparedStatement = world.getSqlConnection()
+				.prepareStatement(query);
 		preparedStatement.setString(1, this.getName());
 		preparedStatement.setString(2, this.getDescription());
 		this.setDirty(false);
@@ -476,7 +480,8 @@ public class Item implements IItem {
 				+ this.getStatMultiplier() + ", " + "bound="
 				+ (this.bound ? "'1'" : "'0'") + ", " + "body_state="
 				+ this.getBodyState() + " WHERE item_id=" + this.getItemID();
-		PreparedStatement preparedStatement = world.getSqlConnection().prepareStatement(query);
+		PreparedStatement preparedStatement = world.getSqlConnection()
+				.prepareStatement(query);
 		preparedStatement.setString(1, this.getName());
 		preparedStatement.setString(2, this.getDescription());
 		// command.BeginExecuteNonQuery(new
@@ -491,7 +496,10 @@ public class Item implements IItem {
 	 * 
 	 */
 	public void deleteItem(GameWorld world) throws Exception {
-		world.getSqlConnection().createStatement().executeQuery("DELETE FROM items WHERE item_id=" + this.getItemID());
+		world.getSqlConnection()
+				.createStatement()
+				.executeUpdate(
+						"DELETE FROM items WHERE item_id=" + this.getItemID());
 		// command.BeginExecuteNonQuery(new
 		// AsyncCallback(GameWorld.DefaultEndExecuteNonQueryAsyncCallback),
 		// command);

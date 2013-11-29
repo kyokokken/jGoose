@@ -6,7 +6,6 @@ import Goose.Events.MoveEvent;
 import Goose.GameSettings;
 import Goose.GameWorld;
 import Goose.ITile;
-import Goose.SpellEffect;
 import Goose.SpellEffect.EffectTypes;
 import Goose.WarpTile;
 import Goose.Window;
@@ -38,8 +37,7 @@ public class MoveEvent extends Event {
 
 	public void ready(GameWorld world) throws Exception {
 		if (this.getPlayer().getState() == Goose.Player.States.Ready) {
-			for (Object __dummyForeachVar0 : this.getPlayer().getBuffs()) {
-				Buff b = (Buff) __dummyForeachVar0;
+			for (Buff b : this.getPlayer().getBuffs()) {
 				// can't move when stunned or rooted
 				if (b.getSpellEffect().getEffectType() == EffectTypes.Stun) {
 					// stunned battletext
@@ -62,8 +60,7 @@ public class MoveEvent extends Event {
 				}
 
 			}
-			for (Object __dummyForeachVar1 : this.getPlayer().getWindows()) {
-				Window window = (Window) __dummyForeachVar1;
+			for (Window window : this.getPlayer().getWindows()) {
 				if (window.getType() == WindowTypes.Vendor) {
 					world.send(this.getPlayer(),
 							"$7You can't move while with a vendor.");

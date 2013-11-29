@@ -2,7 +2,6 @@ package Goose.Events;
 
 import Goose.Event;
 import Goose.GameWorld;
-import Goose.NPC;
 import Goose.NPC.States;
 
 public class NPCSpawnEvent extends Event {

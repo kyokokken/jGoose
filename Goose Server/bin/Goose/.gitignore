@@ -72,3 +72,9 @@
 /Window$WindowFrames.class
 /Window$WindowTypes.class
 /Window.class
+/GameServer$ClientHandler.class
+/ClientHandler.class
+/GameServer$ServerSocketHandler.class
+/GameServer$ServerSocketHandler$ClientHandler.class
+/Ranks$ExperienceComparator.class
+/Ranks$GoldComparator.class

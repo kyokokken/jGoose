@@ -24,6 +24,7 @@ import Goose.Events.GMGetItemCommandEvent;
 import Goose.Events.GMGiveExperienceCommandEvent;
 import Goose.Events.GMKickCommandEvent;
 import Goose.Events.GMShutdownServer;
+import Goose.Events.GMSpawnNPC;
 import Goose.Events.GroupAddEvent;
 import Goose.Events.GroupChatEvent;
 import Goose.Events.GroupRemoveEvent;
@@ -267,6 +268,7 @@ public class EventHandler {
 		this.stringToEvent.put("/giveexperience ",
 				GMGiveExperienceCommandEvent.create(player, data));
 		this.stringToEvent.put("/shutdownserver ", GMShutdownServer.create(player, data));
+		this.stringToEvent.put("/spawn ", GMSpawnNPC.create(player, data));
 	}
 
 	/**

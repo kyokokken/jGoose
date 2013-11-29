@@ -122,7 +122,8 @@ public final class GameSettings {
 
 	private GameSettings() {
 		autoCharacterCreation = true;
-		gameServerPort = 2006;
+//		gameServerPort = 2006;
+		gameServerPort = 6500;
 		maxPlayers = 200;
 		gameServerIP = "0.0.0.0";
 		databaseUsername = "GooseUser";
@@ -135,15 +136,15 @@ public final class GameSettings {
 		baseHaste = 0;
 		baseSpellDamage = 0;
 		baseSpellCrit = 0;
-		baseMeleeDamage = 0;
-		baseMeleeCrit = 0;
+		baseMeleeDamage = 0.50;
+		baseMeleeCrit = 0.50;
 		baseDamageReduction = 0;
 		baseHPPercentRegen = 0.02;
-		baseHPStaticRegen = 50;
+		baseHPStaticRegen = 10;
 		baseMPPercentRegen = 0.02;
-		baseMPStaticRegen = 50;
-		startingHP = 50;
-		startingMP = 50;
+		baseMPStaticRegen = 10;
+		startingHP = 30;
+		startingMP = 30;
 		startingSP = 0;
 		startingStrength = 0;
 		startingStamina = 0;
@@ -155,7 +156,7 @@ public final class GameSettings {
 		startingAirResist = 0;
 		startingSpiritResist = 0;
 		startingEarthResist = 0;
-		startingGold = 5000;
+		startingGold = 1000000;
 		startingExperience = 0;
 		startingExperienceSold = 0;
 //		startingLevel = 50;
@@ -165,7 +166,7 @@ public final class GameSettings {
 		startingBodyID = 1;
 		startingFaceID = 70;
 		startingHairID = 23;
-		startingHairR = 0;
+		startingHairR = 255;
 		startingHairG = 0;
 		startingHairB = 0;
 		startingHairA = 0;
@@ -173,7 +174,7 @@ public final class GameSettings {
 		startingTitle = "";
 		startingSurname = "";
 		regenSpeed = 1;
-		serverVersion = "0.0.1j";
+		serverVersion = "0.0.2j";
 		inventorySize = 30;
 		startingItems = "2 3 4 4 4 4 4 5 5 5 5 5";
 		equippedSize = 13;
@@ -183,7 +184,7 @@ public final class GameSettings {
 		damageModifier = 1;
 		experienceModifier = 8;
 		itemSavePeriod = 300;
-		playerSavePeriod = 180;
+		playerSavePeriod = 20;
 		itemProtectedTime = 60;
 		spellEffectPeriod = 2;
 		spellbookSize = 30;
@@ -191,14 +192,14 @@ public final class GameSettings {
 		partyWindowMax = 10;
 		vendorSlotSize = 30;
 		itemIDStartpoint = 5000;
-		vitaBuyAmount = 50;
-		manaBuyAmount = 50;
+		vitaBuyAmount = 100;
+		manaBuyAmount = 100;
 		increaseVitaBuyAmount = 100000;
 		increaseManaBuyAmount = 100000;
 		experienceCap = 0;
 		combineBagSize = 10;
 		lockdownModeEnabled = false;
-		logoutLagTime = 10;
+		logoutLagTime = 1;
 		guildCreationCost = 700000;
 		defaultGuildMOTD = "Welcome. To change this message type /guildmotd <message>, to give ownership to someone else type /guildowner <name>. To give/remove officer status type /guildofficer <name>";
 		guildSavePeriod = 300;
@@ -206,7 +207,7 @@ public final class GameSettings {
 		rankUpdatePeriod = 300;
 		maxAC = 3000;
 		experienceModifierLimit = 1000000000;
-		dropRateModifier = 1;
+		dropRateModifier = 5;
 		speedhackDetectionEnabled = true;
 		itemGroundExistTime = 10800;
 		itemGroundSweepTime = 5400;
@@ -214,7 +215,7 @@ public final class GameSettings {
 		defaultToggleSettings = 0;
 		newCharactersPerDayPerIP = 3;
 		maxNPCs = 6000;
-		petVitaBuyAmount = 50;
+		petVitaBuyAmount = 100;
 		increasePetVitaBuyCost = 100000;
 		petVitaCost = 100000;
 		petDamageBuyAmount = 50;
