@@ -8,6 +8,13 @@ import Goose.Player.AccessStatus;
 
 public class GMSpawnNPC extends Event {
 
+	// TODO: Change this!
+	// This is a cheap trick for avoid to get an ID of a monster that is
+	// currently dead on the map.
+	// this ID should be high enough for most maps.
+	// Also have to hope GM doesn't spawn many monsters.
+	private static int tempID = 1000;
+
 	public GMSpawnNPC() throws Exception {
 		super();
 		// TODO Auto-generated constructor stub
@@ -58,7 +65,8 @@ public class GMSpawnNPC extends Event {
 
 			for (int i = 0; i < stack; i++) {
 				NPC npc = new NPC();
-				npc.setLoginID(this.getPlayer().getMap().getNPCs().size() + 1);
+				GMSpawnNPC.tempID++;
+				npc.setLoginID(tempID);
 				npc.loadFromTemplate(world, this.getPlayer().getMapID(), this
 						.getPlayer().getMapX(), this.getPlayer().getMapY(),
 						template);

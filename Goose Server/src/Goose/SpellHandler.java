@@ -102,9 +102,8 @@ public class SpellHandler
             this.effects.put(effect.getID(), effect);
         }
         resultSet.close();
-        for (Object __dummyForeachVar2 : this.effects.values())
+        for (SpellEffect s : this.effects.values())
         {
-            SpellEffect s = (SpellEffect)__dummyForeachVar2;
             s.setOnMeleeAttackSpell(this.getSpellEffect(s.getOnMeleeAttackSpellID()));
             s.setOnMeleeHitSpell(this.getSpellEffect(s.getOnMeleeHitSpellID()));
             for (String effectid : s.getBuffStacksOverString().split(" "))

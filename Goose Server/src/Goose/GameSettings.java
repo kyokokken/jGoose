@@ -174,7 +174,7 @@ public final class GameSettings {
 		startingTitle = "";
 		startingSurname = "";
 		regenSpeed = 1;
-		serverVersion = "0.0.2j";
+		serverVersion = "0.0.5j";
 		inventorySize = 30;
 		startingItems = "2 3 4 4 4 4 4 5 5 5 5 5";
 		equippedSize = 13;
@@ -184,7 +184,7 @@ public final class GameSettings {
 		damageModifier = 1;
 		experienceModifier = 8;
 		itemSavePeriod = 300;
-		playerSavePeriod = 20;
+		playerSavePeriod = 180;
 		itemProtectedTime = 60;
 		spellEffectPeriod = 2;
 		spellbookSize = 30;

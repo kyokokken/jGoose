@@ -51,9 +51,8 @@ public class PlayerCastSpellEvent extends Event {
 								world);
 						return;
 					} else {
-						for (Object __dummyForeachVar0 : this.getPlayer()
+						for (Goose.Player player : this.getPlayer()
 								.getMap().getPlayersInRange(this.getPlayer())) {
-							Goose.Player player = (Goose.Player) __dummyForeachVar0;
 							if (player.getLoginID() == target) {
 								this.getPlayer().castSpell(spellid, player,
 										world);
@@ -61,9 +60,8 @@ public class PlayerCastSpellEvent extends Event {
 							}
 
 						}
-						for (Object __dummyForeachVar1 : this.getPlayer()
+						for (Goose.NPC npc : this.getPlayer()
 								.getMap().getNPCsInRange(this.getPlayer())) {
-							Goose.NPC npc = (Goose.NPC) __dummyForeachVar1;
 							if (npc.getLoginID() == target) {
 								this.getPlayer().castSpell(spellid, npc, world);
 								return;

@@ -80,17 +80,23 @@ public class GameServer {
 				byte[] buffer = new byte[512];
 				int res = 0;
 				try {
-					socket.setSoTimeout(2);
-					socket.setReceiveBufferSize(512);
-					res = socket.getInputStream().read(buffer);
-					if (res <= 0) {
-						this.gameworld.lostConnection(socket);
-					} else {
-						String strBuffer = new String(buffer, 0, res,
-								Charsets.US_ASCII);
-						this.gameworld.received(socket, strBuffer);
+					// socket.setSoTimeout(2);
+					if (socket.getInputStream().available() != 0) {
+						socket.setReceiveBufferSize(512);
+						res = socket.getInputStream().read(buffer);
+
+						if (res <= 0) {
+							this.gameworld.lostConnection(socket);
+						} else {
+							String strBuffer = new String(buffer, 0, res,
+									Charsets.US_ASCII);
+							this.gameworld.received(socket, strBuffer);
+						}
 					}
-				} catch (Exception e) {
+				} catch (java.net.SocketException e) { // this is called when
+														// client host closes
+														// aspereta.
+					this.gameworld.lostConnection(socket);
 				}
 			}
 			this.gameworld.update();

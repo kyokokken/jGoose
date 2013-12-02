@@ -585,18 +585,19 @@ public class SpellEffect {
 		String packet = "";
 		int hpresult = this.parseFormula(this.getHPFormula(), caster, target);
 		int mpresult = this.parseFormula(this.getMPFormula(), caster, target);
+		long hpres = hpresult;
 		// int spresult = this.ParseFormula(this.SPFormula, caster, target);
 		// if target is a player then no sd for pvp if not a heal
-		if (!(hpresult < 0 && target instanceof Goose.Player)
+		if (!(hpres < 0 && target instanceof Goose.Player)
 				&& this.getSpellDamageEffects()) {
 			if (world.getRandom().nextInt(10000) + 1 <= caster.getMaxStats()
 					.getSpellCrit() * 10000)
-				hpresult *= 2;
+				hpres *= 2;
 
-			if (hpresult * (1 + caster.getMaxStats().getSpellDamage()) < Integer.MIN_VALUE)
-				hpresult = Integer.MIN_VALUE;
+			if (hpres * (1 + caster.getMaxStats().getSpellDamage()) < Integer.MIN_VALUE)
+				hpres = Integer.MIN_VALUE;
 			else
-				hpresult = ((int) ((hpresult * (1 + caster.getMaxStats()
+				hpres = ((int) ((hpres * (1 + caster.getMaxStats()
 						.getSpellDamage()))));
 			if (world.getRandom().nextInt(10000) + 1 <= caster.getMaxStats()
 					.getSpellCrit() * 10000)
@@ -606,9 +607,19 @@ public class SpellEffect {
 					.getSpellDamage()))));
 		}
 
-		hpresult = ((int) (((double) hpresult * GameSettings.getDefault()
+		hpres = ((int) (((double) hpres * GameSettings.getDefault()
 				.getDamageModifier())));
 		target.setCurrentMP(target.getCurrentMP() + mpresult);
+		
+		//horrible cheat for avoid overflow on attacked();
+		//allows death touch to work.
+		if (hpres <= Integer.MIN_VALUE) {
+			hpresult = Integer.MIN_VALUE + 1;
+		} else if (hpres >= Integer.MAX_VALUE) {
+			hpresult = Integer.MAX_VALUE - 1;
+		} else
+			hpresult = (int) hpres;
+
 		if (hpresult != 0) {
 			target.attacked(caster, -hpresult, world);
 		} else {

@@ -36,6 +36,7 @@ import Goose.Events.GuildOfficerCommandEvent;
 import Goose.Events.GuildOwnerCommandEvent;
 import Goose.Events.GuildRemoveCommandEvent;
 import Goose.Events.HaxCommandEvent;
+import Goose.Events.InstaLevelCommandEvent;
 import Goose.Events.InventoryChangeSlotEvent;
 import Goose.Events.InventorySplitEvent;
 import Goose.Events.InventoryToWindowEvent;
@@ -84,6 +85,7 @@ import Goose.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -99,7 +101,7 @@ public class EventHandler {
 	 * 
 	 */
 //	SortedList<Long, Event> events = new SortedList<Long, Event>();
-	LinkedHashMap<Long, Event> events = new LinkedHashMap<Long, Event>();
+	LinkedHashMap<Long, Event> events;
 	/**
 	 * StringToEvent, converts a string to an event creator delegate
 	 * 
@@ -253,7 +255,7 @@ public class EventHandler {
 		this.stringToEvent.put("KBUF", KillBuffEvent.create(player, data));
 		this.stringToEvent.put("/toggle ", ToggleCommandEvent.create(player, data));
 		this.stringToEvent.put("/aether ", AetherCommandEvent.create(player, data));
-		// this.stringToEvent.Add("/instalevel", InstaLevelCommandEvent.Create);
+		this.stringToEvent.put("/instalevel", InstaLevelCommandEvent.create(player, data));
 		this.stringToEvent.put("/petlist", PetListCommandEvent.create(player, data));
 		this.stringToEvent.put("/petspawn ", PetSpawnCommandEvent.create(player, data));
 		this.stringToEvent.put("/petinfo ", PetInfoCommandEvent.create(player, data));
@@ -345,7 +347,19 @@ public class EventHandler {
         {
         	Event e = entry.getValue();
         	e.ready(world);
-        	this.events.remove(entry.getKey());
+//        	int index = 0;
+//        	for (Iterator<Event> i = this.events.values().iterator();i.hasNext();)
+//        	{
+//        		Event next = i.next();
+//        		if (next.equals(e))
+//        		{
+//        			break;
+//        		}
+//        		index++;
+//        	}
+        
+//        	if (index < readyEvents.size())
+        		this.events.remove(entry.getKey());
         }
         
         

@@ -536,7 +536,7 @@ public class GameWorld {
 	public void parseData(Goose.Player player) throws Exception {
 
 		String data = player.getBuffer();
-		System.out.println("parseData: " + "<" + player.getName() + ">" + data);
+//		System.out.println("parseData: " + "<" + player.getName() + ">" + data);
 		char delim = '\u0001';
 		String[] tokens = data.split(String.valueOf(delim));
 		// int limit = tokens.length - 1;
@@ -551,8 +551,8 @@ public class GameWorld {
 			// data = data.Remove(0, packet.length() + 1);
 			data = data.substring(packet.length() + 1);
 			this.getEventHandler().addEvent(player, packet);
-			System.out.println("addEvent: " + "<" + player.getName() + ">"
-					+ packet);
+//			System.out.println("addEvent: " + "<" + player.getName() + ">"
+//					+ packet);
 		}
 		player.setBuffer(data);
 	}
@@ -579,7 +579,7 @@ public class GameWorld {
 			return;
 
 		// Console.Out.WriteLine("Send: " + data);
-		System.out.println("send: " + data);
+//		System.out.println("send: " + data);
 		data += "\u0001";
 		try {
 			player.getSock().getOutputStream().write(data.getBytes());
