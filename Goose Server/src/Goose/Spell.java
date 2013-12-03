@@ -7,161 +7,161 @@ import Goose.SpellEffect;
  * 
  */
 public class Spell {
-	public enum SpellTargets {
-		Target, Self, Group
-	}
+  public enum SpellTargets {
+    Target, Self, Group
+  }
 
-	private int __ID;
+  private int __ID;
 
-	public int getID() {
-		return __ID;
-	}
+  public int getID() {
+    return __ID;
+  }
 
-	public void setID(int value) {
-		__ID = value;
-	}
+  public void setID(int value) {
+    __ID = value;
+  }
 
-	private String __Name;
+  private String __Name;
 
-	public String getName() {
-		return __Name;
-	}
+  public String getName() {
+    return __Name;
+  }
 
-	public void setName(String value) {
-		__Name = value;
-	}
+  public void setName(String value) {
+    __Name = value;
+  }
 
-	private String __Description;
+  private String __Description;
 
-	public String getDescription() {
-		return __Description;
-	}
+  public String getDescription() {
+    return __Description;
+  }
 
-	public void setDescription(String value) {
-		__Description = value;
-	}
+  public void setDescription(String value) {
+    __Description = value;
+  }
 
-	private SpellTargets __Target = SpellTargets.Target;
+  private SpellTargets __Target = SpellTargets.Target;
 
-	public SpellTargets getTarget() {
-		return __Target;
-	}
+  public SpellTargets getTarget() {
+    return __Target;
+  }
 
-	public void setTarget(SpellTargets value) {
-		__Target = value;
-	}
+  public void setTarget(SpellTargets value) {
+    __Target = value;
+  }
 
-	private long __ClassRestrictions;
+  private long __ClassRestrictions;
 
-	public long getClassRestrictions() {
-		return __ClassRestrictions;
-	}
+  public long getClassRestrictions() {
+    return __ClassRestrictions;
+  }
 
-	public void setClassRestrictions(long value) {
-		__ClassRestrictions = value;
-	}
+  public void setClassRestrictions(long value) {
+    __ClassRestrictions = value;
+  }
 
-	/**
-	 * Aether in milliseconds
-	 */
-	private long __Aether;
+  /**
+   * Aether in milliseconds
+   */
+  private long __Aether;
 
-	public long getAether() {
-		return __Aether;
-	}
+  public long getAether() {
+    return __Aether;
+  }
 
-	public void setAether(long value) {
-		__Aether = value;
-	}
+  public void setAether(long value) {
+    __Aether = value;
+  }
 
-	private long __Graphic;
+  private long __Graphic;
 
-	public long getGraphic() {
-		return __Graphic;
-	}
+  public long getGraphic() {
+    return __Graphic;
+  }
 
-	public void setGraphic(long value) {
-		__Graphic = value;
-	}
+  public void setGraphic(long value) {
+    __Graphic = value;
+  }
 
-	private int __HPStaticCost;
+  private int __HPStaticCost;
 
-	public int getHPStaticCost() {
-		return __HPStaticCost;
-	}
+  public int getHPStaticCost() {
+    return __HPStaticCost;
+  }
 
-	public void setHPStaticCost(int value) {
-		__HPStaticCost = value;
-	}
+  public void setHPStaticCost(int value) {
+    __HPStaticCost = value;
+  }
 
-	private double __HPPercentCost;
+  private double __HPPercentCost;
 
-	public double getHPPercentCost() {
-		return __HPPercentCost;
-	}
+  public double getHPPercentCost() {
+    return __HPPercentCost;
+  }
 
-	public void setHPPercentCost(double value) {
-		__HPPercentCost = value;
-	}
+  public void setHPPercentCost(double value) {
+    __HPPercentCost = value;
+  }
 
-	private int __MPStaticCost;
+  private int __MPStaticCost;
 
-	public int getMPStaticCost() {
-		return __MPStaticCost;
-	}
+  public int getMPStaticCost() {
+    return __MPStaticCost;
+  }
 
-	public void setMPStaticCost(int value) {
-		__MPStaticCost = value;
-	}
+  public void setMPStaticCost(int value) {
+    __MPStaticCost = value;
+  }
 
-	private double __MPPercentCost;
+  private double __MPPercentCost;
 
-	public double getMPPercentCost() {
-		return __MPPercentCost;
-	}
+  public double getMPPercentCost() {
+    return __MPPercentCost;
+  }
 
-	public void setMPPercentCost(double value) {
-		__MPPercentCost = value;
-	}
+  public void setMPPercentCost(double value) {
+    __MPPercentCost = value;
+  }
 
-	private int __SPStaticCost;
+  private int __SPStaticCost;
 
-	public int getSPStaticCost() {
-		return __SPStaticCost;
-	}
+  public int getSPStaticCost() {
+    return __SPStaticCost;
+  }
 
-	public void setSPStaticCost(int value) {
-		__SPStaticCost = value;
-	}
+  public void setSPStaticCost(int value) {
+    __SPStaticCost = value;
+  }
 
-	private double __SPPercentCost;
+  private double __SPPercentCost;
 
-	public double getSPPercentCost() {
-		return __SPPercentCost;
-	}
+  public double getSPPercentCost() {
+    return __SPPercentCost;
+  }
 
-	public void setSPPercentCost(double value) {
-		__SPPercentCost = value;
-	}
+  public void setSPPercentCost(double value) {
+    __SPPercentCost = value;
+  }
 
-	private int __SpellEffectID;
+  private int __SpellEffectID;
 
-	public int getSpellEffectID() {
-		return __SpellEffectID;
-	}
+  public int getSpellEffectID() {
+    return __SpellEffectID;
+  }
 
-	public void setSpellEffectID(int value) {
-		__SpellEffectID = value;
-	}
+  public void setSpellEffectID(int value) {
+    __SpellEffectID = value;
+  }
 
-	private SpellEffect __SpellEffect;
+  private SpellEffect __SpellEffect;
 
-	public SpellEffect getSpellEffect() {
-		return __SpellEffect;
-	}
+  public SpellEffect getSpellEffect() {
+    return __SpellEffect;
+  }
 
-	public void setSpellEffect(SpellEffect value) {
-		__SpellEffect = value;
-	}
+  public void setSpellEffect(SpellEffect value) {
+    __SpellEffect = value;
+  }
 
 }

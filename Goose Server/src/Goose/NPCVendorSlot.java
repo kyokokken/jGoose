@@ -2,44 +2,45 @@ package Goose;
 
 import Goose.ItemTemplate;
 
-public class NPCVendorSlot   
-{
-    private int __Slot;
-    public int getSlot() {
-        return __Slot;
-    }
+public class NPCVendorSlot {
+  private int __Slot;
 
-    public void setSlot(int value) {
-        __Slot = value;
-    }
+  public int getSlot() {
+    return __Slot;
+  }
 
-    private ItemTemplate __ItemTemplate;
-    public ItemTemplate getItemTemplate() {
-        return __ItemTemplate;
-    }
+  public void setSlot(int value) {
+    __Slot = value;
+  }
 
-    public void setItemTemplate(ItemTemplate value) {
-        __ItemTemplate = value;
-    }
+  private ItemTemplate __ItemTemplate;
 
-    private int __Stack;
-    public int getStack() {
-        return __Stack;
-    }
+  public ItemTemplate getItemTemplate() {
+    return __ItemTemplate;
+  }
 
-    public void setStack(int value) {
-        __Stack = value;
-    }
+  public void setItemTemplate(ItemTemplate value) {
+    __ItemTemplate = value;
+  }
 
-    private boolean __CanSeeStats;
-    public boolean getCanSeeStats() {
-        return __CanSeeStats;
-    }
+  private int __Stack;
 
-    public void setCanSeeStats(boolean value) {
-        __CanSeeStats = value;
-    }
+  public int getStack() {
+    return __Stack;
+  }
+
+  public void setStack(int value) {
+    __Stack = value;
+  }
+
+  private boolean __CanSeeStats;
+
+  public boolean getCanSeeStats() {
+    return __CanSeeStats;
+  }
+
+  public void setCanSeeStats(boolean value) {
+    __CanSeeStats = value;
+  }
 
 }
-
-
