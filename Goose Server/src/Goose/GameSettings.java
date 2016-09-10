@@ -125,7 +125,7 @@ public final class GameSettings {
         gameServerPort = 6500;
         maxPlayers = 200;
         gameServerIP = "192.168.1.3";
-        databaseUsername = "username";
+        databaseUsername = "goose";
         databasePassword = "password";
         databaseName = "goose";
         serverName = "Goose";
