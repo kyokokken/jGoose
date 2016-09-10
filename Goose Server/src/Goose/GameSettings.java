@@ -224,7 +224,6 @@ public final class GameSettings {
         petDamageCost = 100000;
         petCountLimit = 5;
         databaseAddress = "localhost";
-
     }
 
     private static GameSettings defaultInstance = new GameSettings();
