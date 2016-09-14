@@ -1,346 +1,342 @@
 package Goose;
 
-import Goose.AttributeSet;
-import Goose.IItem;
-import Goose.SpellEffect;
-
 /**
  * ItemTemplate, base stats for an item
- * 
  */
 public class ItemTemplate implements IItem {
-  public enum UseTypes {
-    Equipment, Consumable, Useless, Scroll
-  }
-  public enum ItemSlots {
-    Helmet, Shield, OneHanded, TwoHanded, Ring, Necklace, Pauldrons, Cloak, Belt, Gloves, Chest, Pants, Shoes, _13, _14, _15;
-  }
-  public enum ItemTypes {
-    Accessory, Cloth, Silk, Plate, OneHandedBlunt, OneHandedSlash, OneHandedPierce, TwoHandedBlunt, TwoHandedSlash, TwoHandedPierce
-  }
+    public enum UseTypes {
+        Equipment, Consumable, Useless, Scroll
+    }
 
-  private int __ID;
+    public enum ItemSlots {
+        Helmet, Shield, OneHanded, TwoHanded, Ring, Necklace, Pauldrons, Cloak, Belt, Gloves, Chest, Pants, Shoes, _13, _14, _15;
+    }
 
-  public int getID() {
-    return __ID;
-  }
+    public enum ItemTypes {
+        Accessory, Cloth, Silk, Plate, OneHandedBlunt, OneHandedSlash, OneHandedPierce, TwoHandedBlunt, TwoHandedSlash, TwoHandedPierce
+    }
 
-  public void setID(int value) {
-    __ID = value;
-  }
+    private int __ID;
 
-  private String __Name;
+    public int getID() {
+        return __ID;
+    }
 
-  public String getName() {
-    return __Name;
-  }
+    public void setID(int value) {
+        __ID = value;
+    }
 
-  public void setName(String value) {
-    __Name = value;
-  }
+    private String __Name;
 
-  private String __Description;
+    public String getName() {
+        return __Name;
+    }
 
-  public String getDescription() {
-    return __Description;
-  }
+    public void setName(String value) {
+        __Name = value;
+    }
 
-  public void setDescription(String value) {
-    __Description = value;
-  }
+    private String __Description;
 
-  private Goose.ItemTemplate.UseTypes __UseType = Goose.ItemTemplate.UseTypes.Equipment;
+    public String getDescription() {
+        return __Description;
+    }
 
-  public Goose.ItemTemplate.UseTypes getUseType() {
-    return __UseType;
-  }
+    public void setDescription(String value) {
+        __Description = value;
+    }
 
-  public void setUseType(Goose.ItemTemplate.UseTypes value) {
-    __UseType = value;
-  }
+    private Goose.ItemTemplate.UseTypes __UseType = Goose.ItemTemplate.UseTypes.Equipment;
 
-  private int __MinLevel;
+    public Goose.ItemTemplate.UseTypes getUseType() {
+        return __UseType;
+    }
 
-  public int getMinLevel() {
-    return __MinLevel;
-  }
+    public void setUseType(Goose.ItemTemplate.UseTypes value) {
+        __UseType = value;
+    }
 
-  public void setMinLevel(int value) {
-    __MinLevel = value;
-  }
+    private int __MinLevel;
 
-  private int __MaxLevel;
+    public int getMinLevel() {
+        return __MinLevel;
+    }
 
-  public int getMaxLevel() {
-    return __MaxLevel;
-  }
+    public void setMinLevel(int value) {
+        __MinLevel = value;
+    }
 
-  public void setMaxLevel(int value) {
-    __MaxLevel = value;
-  }
+    private int __MaxLevel;
 
-  private long __MinExperience;
+    public int getMaxLevel() {
+        return __MaxLevel;
+    }
 
-  public long getMinExperience() {
-    return __MinExperience;
-  }
+    public void setMaxLevel(int value) {
+        __MaxLevel = value;
+    }
 
-  public void setMinExperience(long value) {
-    __MinExperience = value;
-  }
+    private long __MinExperience;
 
-  private long __MaxExperience;
+    public long getMinExperience() {
+        return __MinExperience;
+    }
 
-  public long getMaxExperience() {
-    return __MaxExperience;
-  }
+    public void setMinExperience(long value) {
+        __MinExperience = value;
+    }
 
-  public void setMaxExperience(long value) {
-    __MaxExperience = value;
-  }
+    private long __MaxExperience;
 
-  private AttributeSet __BaseStats;
+    public long getMaxExperience() {
+        return __MaxExperience;
+    }
 
-  public AttributeSet getBaseStats() {
-    return __BaseStats;
-  }
+    public void setMaxExperience(long value) {
+        __MaxExperience = value;
+    }
 
-  public void setBaseStats(AttributeSet value) {
-    __BaseStats = value;
-  }
+    private AttributeSet __BaseStats;
 
-  private int __WeaponDelay;
+    public AttributeSet getBaseStats() {
+        return __BaseStats;
+    }
 
-  public int getWeaponDelay() {
-    return __WeaponDelay;
-  }
+    public void setBaseStats(AttributeSet value) {
+        __BaseStats = value;
+    }
 
-  public void setWeaponDelay(int value) {
-    __WeaponDelay = value;
-  }
+    private int __WeaponDelay;
 
-  private int __WeaponDamage;
+    public int getWeaponDelay() {
+        return __WeaponDelay;
+    }
 
-  public int getWeaponDamage() {
-    return __WeaponDamage;
-  }
+    public void setWeaponDelay(int value) {
+        __WeaponDelay = value;
+    }
 
-  public void setWeaponDamage(int value) {
-    __WeaponDamage = value;
-  }
+    private int __WeaponDamage;
 
-  private ItemTemplate.ItemSlots __Slot = Goose.ItemTemplate.ItemSlots.Helmet;
+    public int getWeaponDamage() {
+        return __WeaponDamage;
+    }
 
-  public ItemTemplate.ItemSlots getSlot() {
-    return __Slot;
-  }
+    public void setWeaponDamage(int value) {
+        __WeaponDamage = value;
+    }
 
-  public void setSlot(Goose.ItemTemplate.ItemSlots value) {
-    __Slot = value;
-  }
+    private ItemTemplate.ItemSlots __Slot = Goose.ItemTemplate.ItemSlots.Helmet;
 
-  private ItemTemplate.ItemTypes __Type = Goose.ItemTemplate.ItemTypes.Accessory;
+    public ItemTemplate.ItemSlots getSlot() {
+        return __Slot;
+    }
 
-  public ItemTemplate.ItemTypes getType() {
-    return __Type;
-  }
+    public void setSlot(Goose.ItemTemplate.ItemSlots value) {
+        __Slot = value;
+    }
 
-  public void setType(Goose.ItemTemplate.ItemTypes value) {
-    __Type = value;
-  }
+    private ItemTemplate.ItemTypes __Type = Goose.ItemTemplate.ItemTypes.Accessory;
 
-  private int __GraphicEquipped;
+    public ItemTemplate.ItemTypes getType() {
+        return __Type;
+    }
 
-  public int getGraphicEquipped() {
-    return __GraphicEquipped;
-  }
+    public void setType(Goose.ItemTemplate.ItemTypes value) {
+        __Type = value;
+    }
 
-  public void setGraphicEquipped(int value) {
-    __GraphicEquipped = value;
-  }
+    private int __GraphicEquipped;
 
-  private int __GraphicTile;
+    public int getGraphicEquipped() {
+        return __GraphicEquipped;
+    }
 
-  public int getGraphicTile() {
-    return __GraphicTile;
-  }
+    public void setGraphicEquipped(int value) {
+        __GraphicEquipped = value;
+    }
 
-  public void setGraphicTile(int value) {
-    __GraphicTile = value;
-  }
+    private int __GraphicTile;
 
-  private int __GraphicR;
+    public int getGraphicTile() {
+        return __GraphicTile;
+    }
 
-  public int getGraphicR() {
-    return __GraphicR;
-  }
+    public void setGraphicTile(int value) {
+        __GraphicTile = value;
+    }
 
-  public void setGraphicR(int value) {
-    __GraphicR = value;
-  }
+    private int __GraphicR;
 
-  private int __GraphicG;
+    public int getGraphicR() {
+        return __GraphicR;
+    }
 
-  public int getGraphicG() {
-    return __GraphicG;
-  }
+    public void setGraphicR(int value) {
+        __GraphicR = value;
+    }
 
-  public void setGraphicG(int value) {
-    __GraphicG = value;
-  }
+    private int __GraphicG;
 
-  private int __GraphicB;
+    public int getGraphicG() {
+        return __GraphicG;
+    }
 
-  public int getGraphicB() {
-    return __GraphicB;
-  }
+    public void setGraphicG(int value) {
+        __GraphicG = value;
+    }
 
-  public void setGraphicB(int value) {
-    __GraphicB = value;
-  }
+    private int __GraphicB;
 
-  private int __GraphicA;
+    public int getGraphicB() {
+        return __GraphicB;
+    }
 
-  public int getGraphicA() {
-    return __GraphicA;
-  }
+    public void setGraphicB(int value) {
+        __GraphicB = value;
+    }
 
-  public void setGraphicA(int value) {
-    __GraphicA = value;
-  }
+    private int __GraphicA;
 
-  private long __Value;
+    public int getGraphicA() {
+        return __GraphicA;
+    }
 
-  public long getValue() {
-    return __Value;
-  }
+    public void setGraphicA(int value) {
+        __GraphicA = value;
+    }
 
-  public void setValue(long value) {
-    __Value = value;
-  }
+    private long __Value;
 
-  private boolean __IsLore;
+    public long getValue() {
+        return __Value;
+    }
 
-  public boolean getIsLore() {
-    return __IsLore;
-  }
+    public void setValue(long value) {
+        __Value = value;
+    }
 
-  public void setIsLore(boolean value) {
-    __IsLore = value;
-  }
+    private boolean __IsLore;
 
-  private boolean __IsBindOnPickup;
+    public boolean getIsLore() {
+        return __IsLore;
+    }
 
-  public boolean getIsBindOnPickup() {
-    return __IsBindOnPickup;
-  }
+    public void setIsLore(boolean value) {
+        __IsLore = value;
+    }
 
-  public void setIsBindOnPickup(boolean value) {
-    __IsBindOnPickup = value;
-  }
+    private boolean __IsBindOnPickup;
 
-  private boolean __IsBindOnEquip;
+    public boolean getIsBindOnPickup() {
+        return __IsBindOnPickup;
+    }
 
-  public boolean getIsBindOnEquip() {
-    return __IsBindOnEquip;
-  }
+    public void setIsBindOnPickup(boolean value) {
+        __IsBindOnPickup = value;
+    }
 
-  public void setIsBindOnEquip(boolean value) {
-    __IsBindOnEquip = value;
-  }
+    private boolean __IsBindOnEquip;
 
-  private boolean __IsEvent;
+    public boolean getIsBindOnEquip() {
+        return __IsBindOnEquip;
+    }
 
-  public boolean getIsEvent() {
-    return __IsEvent;
-  }
+    public void setIsBindOnEquip(boolean value) {
+        __IsBindOnEquip = value;
+    }
 
-  public void setIsEvent(boolean value) {
-    __IsEvent = value;
-  }
+    private boolean __IsEvent;
 
-  /**
-   * This is a bitmask Therefore only limited to about 64 classes, which should be enough. If the
-   * bit is set then that class id CAN'T use the item.
-   * 
-   */
-  private long __ClassRestrictions;
+    public boolean getIsEvent() {
+        return __IsEvent;
+    }
 
-  public long getClassRestrictions() {
-    return __ClassRestrictions;
-  }
+    public void setIsEvent(boolean value) {
+        __IsEvent = value;
+    }
 
-  public void setClassRestrictions(long value) {
-    __ClassRestrictions = value;
-  }
+    /**
+     * This is a bitmask Therefore only limited to about 64 classes, which should be enough. If the
+     * bit is set then that class id CAN'T use the item.
+     */
+    private long __ClassRestrictions;
 
-  private int __StackSize;
+    public long getClassRestrictions() {
+        return __ClassRestrictions;
+    }
 
-  public int getStackSize() {
-    return __StackSize;
-  }
+    public void setClassRestrictions(long value) {
+        __ClassRestrictions = value;
+    }
 
-  public void setStackSize(int value) {
-    __StackSize = value;
-  }
+    private int __StackSize;
 
-  /**
-   * Body pose/state 1 for normal, 3 for staff, 4 for sword
-   */
-  private int __BodyState;
+    public int getStackSize() {
+        return __StackSize;
+    }
 
-  public int getBodyState() {
-    return __BodyState;
-  }
+    public void setStackSize(int value) {
+        __StackSize = value;
+    }
 
-  public void setBodyState(int value) {
-    __BodyState = value;
-  }
+    /**
+     * Body pose/state 1 for normal, 3 for staff, 4 for sword
+     */
+    private int __BodyState;
 
-  /**
-   * Spell effect id
-   */
-  private int __SpellEffectID;
+    public int getBodyState() {
+        return __BodyState;
+    }
 
-  public int getSpellEffectID() {
-    return __SpellEffectID;
-  }
+    public void setBodyState(int value) {
+        __BodyState = value;
+    }
 
-  public void setSpellEffectID(int value) {
-    __SpellEffectID = value;
-  }
+    /**
+     * Spell effect id
+     */
+    private int __SpellEffectID;
 
-  /**
-   * Spell effect
-   */
-  private SpellEffect __SpellEffect;
+    public int getSpellEffectID() {
+        return __SpellEffectID;
+    }
 
-  public SpellEffect getSpellEffect() {
-    return __SpellEffect;
-  }
+    public void setSpellEffectID(int value) {
+        __SpellEffectID = value;
+    }
 
-  public void setSpellEffect(SpellEffect value) {
-    __SpellEffect = value;
-  }
+    /**
+     * Spell effect
+     */
+    private SpellEffect __SpellEffect;
 
-  private double __SpellEffectChance;
+    public SpellEffect getSpellEffect() {
+        return __SpellEffect;
+    }
 
-  public double getSpellEffectChance() {
-    return __SpellEffectChance;
-  }
+    public void setSpellEffect(SpellEffect value) {
+        __SpellEffect = value;
+    }
 
-  public void setSpellEffectChance(double value) {
-    __SpellEffectChance = value;
-  }
+    private double __SpellEffectChance;
 
-  private int __LearnSpellID;
+    public double getSpellEffectChance() {
+        return __SpellEffectChance;
+    }
 
-  public int getLearnSpellID() {
-    return __LearnSpellID;
-  }
+    public void setSpellEffectChance(double value) {
+        __SpellEffectChance = value;
+    }
 
-  public void setLearnSpellID(int value) {
-    __LearnSpellID = value;
-  }
+    private int __LearnSpellID;
+
+    public int getLearnSpellID() {
+        return __LearnSpellID;
+    }
+
+    public void setLearnSpellID(int value) {
+        __LearnSpellID = value;
+    }
 
 }

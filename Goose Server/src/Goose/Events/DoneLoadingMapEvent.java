@@ -1,13 +1,12 @@
 package Goose.Events;
 
-import java.util.List;
-
 import Goose.Event;
-import Goose.Events.DoneLoadingMapEvent;
 import Goose.GameWorld;
 import Goose.ItemTile;
 import Goose.Map;
 import Goose.NPC;
+
+import java.util.List;
 
 /**
  * DoneLoadingMapEvent, event for DLM
@@ -22,7 +21,7 @@ import Goose.NPC;
  */
 public class DoneLoadingMapEvent extends Event {
   public DoneLoadingMapEvent() throws Exception {
-    super();
+    super("DoneLoadingMapEvent");
   }
 
   public static Event create(Goose.Player player, Object data) throws Exception {

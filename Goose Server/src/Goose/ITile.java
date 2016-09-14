@@ -1,3 +1,4 @@
 package Goose;
 
-public interface ITile {}
+public interface ITile {
+}
